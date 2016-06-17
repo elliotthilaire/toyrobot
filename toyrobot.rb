@@ -33,7 +33,16 @@ class ToyRobot
   end
 
   def right
-    fail NotImplementedError
+    case @facing
+    when 'NORTH'
+      @facing = 'EAST'
+    when 'EAST'
+      @facing = 'SOUTH'
+    when 'SOUTH'
+      @facing = 'WEST'
+    when 'WEST'
+      @facing = 'NORTH'
+    end
   end
 
 private
