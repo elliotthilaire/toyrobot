@@ -17,13 +17,15 @@ class ToyRobot
   end
 
   def report
-    return unless @x && @y && @facing
+    return unless validate_position
 
     "#{@x},#{@y},#{@facing}"
   end
 
   def move
-    fail NotImplementedError
+    return unless validate_position
+
+    @y += 1
   end
 
   def left
@@ -35,5 +37,9 @@ class ToyRobot
   end
 
 private
+
+  def validate_position
+    @x && @y && @facing
+  end
 
 end
