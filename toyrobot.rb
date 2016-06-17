@@ -1,17 +1,19 @@
 
 class ToyRobot
   def initialize
-    @location = nil
+    @x = nil
+    @y = nil
     @facing = nil
   end
 
   def place(x:, y:, facing:)
-    @location = [x,y]
+    @x = x
+    @y = y
     @facing = facing
   end
 
   def report
-    "0,0,NORTH"
+    "#{@x},#{@y},#{@facing}"
   end
 
   def move
