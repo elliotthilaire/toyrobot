@@ -87,5 +87,31 @@ describe ToyRobot do
     end
   end
 
+  describe '#left' do
+    it 'rotates from NORTH to WEST' do
+      @toyrobot.place(x: 0, y: 0, facing: 'NORTH')
+      @toyrobot.left
+      @toyrobot.report.must_equal "0,0,WEST"
+    end
+
+    it 'rotates from WEST to SOUTH' do
+      @toyrobot.place(x: 0, y: 0, facing: 'WEST')
+      @toyrobot.left
+      @toyrobot.report.must_equal "0,0,SOUTH"
+    end
+
+    it 'rotates from SOUTH to EAST' do
+      @toyrobot.place(x: 0, y: 0, facing: 'SOUTH')
+      @toyrobot.left
+      @toyrobot.report.must_equal "0,0,EAST"
+    end
+
+    it 'rotates from EAST to NORTH' do
+      @toyrobot.place(x: 0, y: 0, facing: 'EAST')
+      @toyrobot.left
+      @toyrobot.report.must_equal "0,0,NORTH"
+    end
+  end
+
 end
 
