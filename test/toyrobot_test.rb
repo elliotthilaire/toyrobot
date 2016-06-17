@@ -46,6 +46,11 @@ describe ToyRobot do
       @toyrobot.place(x: 0, y: 5, facing: 'NORTH')
       @toyrobot.report.must_equal nil
     end
+
+    it 'does nothing when supplied with invalid direction' do
+      @toyrobot.place(x: 0, y: 0, facing: 'INVALID_DIRECTION')
+      @toyrobot.report.must_equal nil
+    end
   end
 
 end
