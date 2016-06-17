@@ -26,6 +26,26 @@ describe ToyRobot do
       @toyrobot.place(x: 0, y: 1, facing: 'NORTH')
       @toyrobot.report.must_equal "0,1,NORTH"
     end
+
+    it 'does nothing when placed below x bounds' do
+      @toyrobot.place(x: -1, y: 0, facing: 'NORTH')
+      @toyrobot.report.must_equal nil
+    end
+
+    it 'does nothing when placed above x bounds' do
+      @toyrobot.place(x: 5, y: 0, facing: 'NORTH')
+      @toyrobot.report.must_equal nil
+    end
+
+    it 'does nothing when placed below y bounds' do
+      @toyrobot.place(x: 0, y: -1, facing: 'NORTH')
+      @toyrobot.report.must_equal nil
+    end
+
+    it 'does nothing when placed above y bounds' do
+      @toyrobot.place(x: 0, y: 5, facing: 'NORTH')
+      @toyrobot.report.must_equal nil
+    end
   end
 
 end

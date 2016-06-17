@@ -4,6 +4,9 @@ class ToyRobot
   end
 
   def place(x:, y:, facing:)
+    return unless x.between?(0,4)
+    return unless y.between?(0,4)
+
     @x = x
     @y = y
     @facing = facing
