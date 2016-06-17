@@ -25,7 +25,16 @@ class ToyRobot
   def move
     return unless validate_position
 
-    @y += 1
+    case @facing
+    when 'NORTH'
+      @y += 1
+    when 'EAST'
+      @x += 1
+    when 'SOUTH'
+      @y -= 1
+    when 'WEST'
+      @x -= 1
+    end
   end
 
   def left

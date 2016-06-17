@@ -54,10 +54,28 @@ describe ToyRobot do
   end
 
   describe '#move' do
-    it 'moves foward' do
+    it 'moves foward NORTH' do
       @toyrobot.place(x: 0, y: 0, facing: 'NORTH')
       @toyrobot.move
       @toyrobot.report.must_equal "0,1,NORTH"
+    end
+
+    it 'moves foward EAST' do
+      @toyrobot.place(x: 0, y: 0, facing: 'EAST')
+      @toyrobot.move
+      @toyrobot.report.must_equal "1,0,EAST"
+    end
+
+    it 'moves foward SOUTH' do
+      @toyrobot.place(x: 4, y: 4, facing: 'SOUTH')
+      @toyrobot.move
+      @toyrobot.report.must_equal "4,3,SOUTH"
+    end
+
+    it 'moves foward WEST' do
+      @toyrobot.place(x: 4, y: 4, facing: 'WEST')
+      @toyrobot.move
+      @toyrobot.report.must_equal "3,4,WEST"
     end
   end
 
