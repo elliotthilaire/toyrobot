@@ -1,9 +1,6 @@
 
 class ToyRobot
   def initialize
-    @x = nil
-    @y = nil
-    @facing = nil
   end
 
   def place(x:, y:, facing:)
@@ -13,6 +10,8 @@ class ToyRobot
   end
 
   def report
+    return unless @x && @y && @facing
+
     "#{@x},#{@y},#{@facing}"
   end
 

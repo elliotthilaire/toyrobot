@@ -7,9 +7,17 @@ describe ToyRobot do
   end
 
   describe "#report" do
-    it 'reports placement when at 0,0, NORTH' do
-      @toyrobot.place(x: 0, y: 0, facing: 'NORTH')
-      @toyrobot.report.must_equal "0,0,NORTH"
+    describe "when placed at 0,0, NORTH" do
+      it 'reports placement' do
+        @toyrobot.place(x: 0, y: 0, facing: 'NORTH')
+        @toyrobot.report.must_equal "0,0,NORTH"
+      end
+    end
+
+    describe "when not placed" do
+      it 'returns with nothing' do
+        @toyrobot.report.must_equal nil
+      end
     end
   end
 
