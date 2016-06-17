@@ -27,13 +27,13 @@ class ToyRobot
 
     case @facing
     when 'NORTH'
-      @y += 1
+      @y = [(@y + 1), 4].min
     when 'EAST'
-      @x += 1
+      @x = [(@x + 1), 4].min
     when 'SOUTH'
-      @y -= 1
+      @y = [(@y - 1), 0].max
     when 'WEST'
-      @x -= 1
+      @x = [(@x - 1), 0].max
     end
   end
 

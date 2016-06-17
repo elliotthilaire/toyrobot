@@ -77,6 +77,32 @@ describe ToyRobot do
       @toyrobot.move
       @toyrobot.report.must_equal "3,4,WEST"
     end
+
+    describe 'when at edge' do
+      it 'does not move NORTH' do
+        @toyrobot.place(x: 4, y: 4, facing: 'NORTH')
+        @toyrobot.move
+        @toyrobot.report.must_equal "4,4,NORTH"
+      end
+
+      it 'does not move EAST' do
+        @toyrobot.place(x: 4, y: 4, facing: 'EAST')
+        @toyrobot.move
+        @toyrobot.report.must_equal "4,4,EAST"
+      end
+
+      it 'does not move SOUTH' do
+        @toyrobot.place(x: 0, y: 0, facing: 'SOUTH')
+        @toyrobot.move
+        @toyrobot.report.must_equal "0,0,SOUTH"
+      end
+
+      it 'does not move WEST' do
+        @toyrobot.place(x: 0, y: 0, facing: 'WEST')
+        @toyrobot.move
+        @toyrobot.report.must_equal "0,0,WEST"
+      end
+    end
   end
 
   describe '#right' do
