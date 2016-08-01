@@ -72,7 +72,7 @@ class ToyRobot
     when "RIGHT"
       right
     when "REPORT"
-      report
+      puts report
     end
   end
 

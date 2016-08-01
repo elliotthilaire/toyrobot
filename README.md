@@ -1,3 +1,30 @@
+#
+
+Status: Complete, with rough edges.
+
+## Usage
+
+Run with input from the terminal
+```bash
+bin/toyrobot
+```
+
+Read from a file
+```bash
+bin/toyrobot example_1.txt
+```
+
+```bash
+bin/toyrobot example_2.txt
+```
+
+```bash
+bin/toyrobot example_3.txt
+```
+
+## The challenge
+
+
 <strong>Toy Robot Simulator challenge</strong>
 
 Description:
