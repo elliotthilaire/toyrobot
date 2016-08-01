@@ -1,3 +1,5 @@
+require_relative "lib/position"
+
 class ToyRobot
 
   VALID_DIRECTIONS = ['NORTH', 'EAST', 'SOUTH', 'WEST']
@@ -10,30 +12,27 @@ class ToyRobot
     return unless y.between?(0,4)
     return unless VALID_DIRECTIONS.include? facing
 
-    @x = x
-    @y = y
     @facing = facing
+    @position = Position.new(x: x, y: y)
     self
   end
 
   def report
     return unless validate_position
 
-    "#{@x},#{@y},#{@facing}"
+    "#{@position.x},#{@position.y},#{@facing}"
   end
 
   def move
-    return unless validate_position
-
     case @facing
     when 'NORTH'
-      @y = [(@y + 1), 4].min
+      @position.move_north
     when 'EAST'
-      @x = [(@x + 1), 4].min
+      @position.move_east
     when 'SOUTH'
-      @y = [(@y - 1), 0].max
+      @position.move_south
     when 'WEST'
-      @x = [(@x - 1), 0].max
+      @position.move_west
     end
     self
   end
@@ -72,7 +71,6 @@ class ToyRobot
     commands.collect do |string|
       parse(string)
     end.last
-
   end
 
   def parse(string)
@@ -96,7 +94,7 @@ class ToyRobot
 private
 
   def validate_position
-    @x && @y && @facing
+    @position && @facing
   end
 
 end
