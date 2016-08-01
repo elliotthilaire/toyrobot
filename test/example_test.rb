@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require './toyrobot'
 
-# Feature tests writtin from README.md
+# Acceptance tests written from README.md
 
 describe ToyRobot do
   before do
@@ -10,22 +10,40 @@ describe ToyRobot do
 
   describe "first example" do
     it "must work" do
-      sequence = "PLACE 0,0,NORTH MOVE REPORT"
+      sequence = <<~EOF
+        PLACE 0,0,NORTH
+        MOVE
+        REPORT
+      EOF
+
       @toyrobot.run(sequence).must_equal "0,1,NORTH"
     end
   end
 
   describe "second example" do
     it "must work" do
-      sequence = "PLACE 0,0,NORTH LEFT REPORT"
-      @toyrobot.run(sequence).must_equal "0,0,WEST"
-    end
+      sequence = <<~EOF
+        PLACE 0,0,NORTH
+        LEFT
+        REPORT
+      EOF
 
-  describe "third example" do
-    it "must work" do
-      sequence = "PLACE 1,2,EAST MOVE MOVE LEFT MOVE REPORT"
       @toyrobot.run(sequence).must_equal "0,0,WEST"
     end
   end
-end
 
+  describe "third example" do
+    it "must work" do
+      sequence = <<~EOF
+        PLACE 1,2,EAST
+        MOVE
+        MOVE
+        LEFT
+        MOVE
+        REPORT
+      EOF
+
+      @toyrobot.run(sequence).must_equal "3,3,NORTH"
+    end
+  end
+end
