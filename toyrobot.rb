@@ -1,30 +1,26 @@
 require_relative "lib/position"
+require_relative "lib/direction"
 
 class ToyRobot
-
-  VALID_DIRECTIONS = ['NORTH', 'EAST', 'SOUTH', 'WEST']
 
   def initialize
   end
 
-  def place(x:, y:, facing:)
-    return unless x.between?(0,4)
-    return unless y.between?(0,4)
-    return unless VALID_DIRECTIONS.include? facing
-
-    @facing = facing
+  def place(x:, y:, direction:)
+    @direction = Direction.new(direction: direction)
     @position = Position.new(x: x, y: y)
     self
+  rescue ArgumentError
+    return
   end
 
   def report
     return unless validate_position
-
-    "#{@position.x},#{@position.y},#{@facing}"
+    "#{@position.x},#{@position.y},#{@direction.direction}"
   end
 
   def move
-    case @facing
+    case @direction.direction
     when 'NORTH'
       @position.move_north
     when 'EAST'
@@ -38,30 +34,12 @@ class ToyRobot
   end
 
   def left
-    case @facing
-    when 'NORTH'
-      @facing = 'WEST'
-    when 'WEST'
-      @facing = 'SOUTH'
-    when 'SOUTH'
-      @facing = 'EAST'
-    when 'EAST'
-      @facing = 'NORTH'
-    end
+    @direction.left
     self
   end
 
   def right
-    case @facing
-    when 'NORTH'
-      @facing = 'EAST'
-    when 'EAST'
-      @facing = 'SOUTH'
-    when 'SOUTH'
-      @facing = 'WEST'
-    when 'WEST'
-      @facing = 'NORTH'
-    end
+    @direction.right
     self
   end
 
@@ -78,8 +56,8 @@ class ToyRobot
 
     case command
     when "PLACE"
-      x, y, f = args.split(",")
-      place(x: Integer(x), y: Integer(y), facing: f)
+      x, y, direction = args.split(",")
+      place(x: Integer(x), y: Integer(y), direction: direction)
     when "MOVE"
       move
     when "LEFT"
@@ -94,7 +72,7 @@ class ToyRobot
 private
 
   def validate_position
-    @position && @facing
+    @position && @direction
   end
 
 end

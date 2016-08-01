@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require_relative '../toyrobot'
+
+toyrobot = ToyRobot.new
+
+while
+  command = gets
+  break if command == "EXIT\n"
+
+  toyrobot.parse(command)
+
+  puts toyrobot if command == "REPORT"
+
+  # puts command
+end
