@@ -1,4 +1,4 @@
-#
+# Toy Robot Simulator challenge
 
 Status: Complete, with rough edges.
 
@@ -22,8 +22,14 @@ bin/toyrobot example_2.txt
 bin/toyrobot example_3.txt
 ```
 
-## The challenge
+## Tests
 
+Run tests with
+```bash
+rake test
+```
+
+## The challenge
 
 <strong>Toy Robot Simulator challenge</strong>
 
