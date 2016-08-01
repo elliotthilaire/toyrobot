@@ -1,15 +1,18 @@
 #!/usr/bin/env ruby
 
 require_relative '../toyrobot'
-require 'byebug'
 
 toyrobot = ToyRobot.new
 
-while
-  command = gets
-  break if command == "EXIT\n"
+if filepath = ARGV[0]
+  file = IO.read(filepath)
+  toyrobot.run(file)
+else
 
-  toyrobot.run(command)
-
-  puts toyrobot.report if command == "REPORT\n"
+  while
+    command = gets
+    break if command == "EXIT\n"
+    toyrobot.run(command)
+    puts toyrobot.report if command == "REPORT\n"
+  end
 end
