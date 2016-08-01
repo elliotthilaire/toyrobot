@@ -9,10 +9,11 @@ if filepath = ARGV[0]
   toyrobot.run(file)
 else
 
+
+  puts "Enter commands; EXIT to quit:"
   while
-    command = gets
-    break if command == "EXIT\n"
+    command = gets.chomp
+    break if command == "EXIT"
     toyrobot.run(command)
-    puts toyrobot.report if command == "REPORT\n"
   end
 end
