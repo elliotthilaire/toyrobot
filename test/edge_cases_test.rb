@@ -42,4 +42,15 @@ describe ToyRobot do
       @toyrobot.run(sequence).must_equal nil
     end
   end
+
+  describe "place command with no args" do
+    it "does nothing" do
+      sequence = <<~EOF
+        PLACE
+        REPORT
+      EOF
+
+      @toyrobot.run(sequence).must_equal nil
+    end
+  end
 end

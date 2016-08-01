@@ -57,18 +57,12 @@ class ToyRobot
     end.last
   end
 
-
-private
-
-  def placed?
-    @position && @direction
-  end
-
   def interpret(command_string)
     command, args = command_string.split(" ")
 
     case command
     when "PLACE"
+      return unless args
       x, y, direction = args.split(",")
       place(x: Integer(x), y: Integer(y), direction: direction)
     when "MOVE"
@@ -82,4 +76,9 @@ private
     end
   end
 
+private
+
+  def placed?
+    @position && @direction
+  end
 end

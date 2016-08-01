@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative '../toyrobot'
+require 'byebug'
 
 toyrobot = ToyRobot.new
 
@@ -8,9 +9,7 @@ while
   command = gets
   break if command == "EXIT\n"
 
-  toyrobot.parse(command)
+  toyrobot.run(command)
 
-  puts toyrobot if command == "REPORT"
-
-  # puts command
+  puts toyrobot.report if command == "REPORT\n"
 end
