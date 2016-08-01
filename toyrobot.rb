@@ -1,4 +1,3 @@
-
 class ToyRobot
 
   VALID_DIRECTIONS = ['NORTH', 'EAST', 'SOUTH', 'WEST']
@@ -14,6 +13,7 @@ class ToyRobot
     @x = x
     @y = y
     @facing = facing
+    self
   end
 
   def report
@@ -35,6 +35,7 @@ class ToyRobot
     when 'WEST'
       @x = [(@x - 1), 0].max
     end
+    self
   end
 
   def left
@@ -48,6 +49,7 @@ class ToyRobot
     when 'EAST'
       @facing = 'NORTH'
     end
+    self
   end
 
   def right
@@ -60,6 +62,34 @@ class ToyRobot
       @facing = 'WEST'
     when 'WEST'
       @facing = 'NORTH'
+    end
+    self
+  end
+
+  def run(sequence)
+    commands = sequence.split("\n")
+
+    commands.collect do |string|
+      parse(string)
+    end.last
+
+  end
+
+  def parse(string)
+    command, args = string.split(" ")
+
+    case command
+    when "PLACE"
+      x, y, f = args.split(",")
+      place(x: Integer(x), y: Integer(y), facing: f)
+    when "MOVE"
+      move
+    when "LEFT"
+      left
+    when "RIGHT"
+      right
+    when "REPORT"
+      report
     end
   end
 
