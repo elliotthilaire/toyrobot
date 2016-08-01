@@ -15,11 +15,13 @@ class ToyRobot
   end
 
   def report
-    return unless validate_position
+    return unless placed?
     "#{@position.x},#{@position.y},#{@direction.direction}"
   end
 
   def move
+    return unless placed?
+
     case @direction.direction
     when 'NORTH'
       @position.move_north
@@ -34,11 +36,15 @@ class ToyRobot
   end
 
   def left
+    return unless placed?
+
     @direction.left
     self
   end
 
   def right
+    return unless placed?
+
     @direction.right
     self
   end
@@ -46,13 +52,20 @@ class ToyRobot
   def run(sequence)
     commands = sequence.split("\n")
 
-    commands.collect do |string|
-      parse(string)
+    commands.collect do |command_string|
+      interpret(command_string)
     end.last
   end
 
-  def parse(string)
-    command, args = string.split(" ")
+
+private
+
+  def placed?
+    @position && @direction
+  end
+
+  def interpret(command_string)
+    command, args = command_string.split(" ")
 
     case command
     when "PLACE"
@@ -67,12 +80,6 @@ class ToyRobot
     when "REPORT"
       report
     end
-  end
-
-private
-
-  def validate_position
-    @position && @direction
   end
 
 end
