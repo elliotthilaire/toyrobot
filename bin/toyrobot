@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative '../toyrobot'
+require_relative '../lib/toyrobot'
 
-toyrobot = ToyRobot.new
-
-if filepath = ARGV[0]
-  file = IO.read(filepath)
-  toyrobot.run(file)
-else
-
-
-  puts "Enter commands; EXIT to quit:"
-  while
-    command = gets.chomp
-    break if command == "EXIT"
-    toyrobot.run(command)
-  end
-end
+ToyRobot::CLI.start(ARGV)

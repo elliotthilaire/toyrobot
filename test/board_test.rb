@@ -1,7 +1,7 @@
 require 'minitest/autorun'
-require_relative '../lib/board'
+require_relative '../lib/toyrobot/board'
 
-describe Board do
+describe ToyRobot::Board do
 
   describe "defaults" do
     describe "#safe?" do

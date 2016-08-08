@@ -1,11 +1,11 @@
 require 'minitest/autorun'
-require './toyrobot'
+require_relative '../lib/toyrobot/robot'
 
 # Acceptance tests written from README.md
 
-describe ToyRobot do
+describe ToyRobot::Robot do
   before do
-    @toyrobot = ToyRobot.new
+    @toyrobot = ToyRobot::Robot.new
   end
 
   describe "first example" do
