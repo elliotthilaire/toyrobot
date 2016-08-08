@@ -1,6 +1,6 @@
 # Toy Robot Simulator challenge
 
-Status: Complete, with rough edges.
+Status: Functionality complete. Half finished refactoring.
 
 ## Usage
 
