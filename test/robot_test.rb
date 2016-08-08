@@ -1,7 +1,7 @@
 require 'minitest/autorun'
-require './toyrobot'
+require_relative '../lib/robot'
 
-describe ToyRobot do
+describe Robot do
   before do
     @toyrobot = ToyRobot.new
   end
